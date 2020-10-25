@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	value := 11100000
-	for value < 11100102 {
+	value := 22120000
+	for value < 22120102 {
 		valueConvert := strconv.Itoa(value)
 		num := valueConvert
 		oneDigit := [10]string{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
@@ -88,7 +88,7 @@ func main() {
 			}
 
 			if position == 7 {
-				word += oneDigit[numValue] + " " + "million" + " "
+				word += oneDigit[numValue] + " " + "Million" + " "
 				continue
 			}
 			word += oneDigit[numValue] + " " + otherDigit[position] + " "
