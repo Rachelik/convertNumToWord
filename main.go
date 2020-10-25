@@ -6,14 +6,14 @@ import (
 )
 
 func main() {
-	value := 22150
-	for value < 22251 {
+	value := 222150
+	for value < 222251 {
 		valueConvert := strconv.Itoa(value)
 		num := valueConvert
 		oneDigit := [10]string{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
 		specialDigit := [...]string{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"}
 		twoDigit := [...]string{"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"}
-		otherDigit := [...]string{"", "", "", " Hundred ", " Thousand "}
+		otherDigit := [...]string{"", "", "", " Hundred ", " Thousand ", " What", "ha"}
 
 		var word string
 		for i := 0; i < len(num); i++ {
@@ -64,7 +64,12 @@ func main() {
 					continue
 				}
 			}
+			if position == 6 {
+				word += oneDigit[numValue] + otherDigit[3] + "and "
+				continue
+			}
 			word += oneDigit[numValue] + otherDigit[position]
+
 		}
 		fmt.Println(word)
 		value++
