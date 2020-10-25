@@ -6,14 +6,14 @@ import (
 )
 
 func main() {
-	value := 222150
-	for value < 222251 {
+	value := 100000
+	for value < 100112 {
 		valueConvert := strconv.Itoa(value)
 		num := valueConvert
 		oneDigit := [10]string{"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
 		specialDigit := [...]string{"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"}
 		twoDigit := [...]string{"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"}
-		otherDigit := [...]string{"", "", "", " Hundred ", " Thousand ", " What", "ha"}
+		otherDigit := [...]string{"", "", "", "Hundred", "Thousand"}
 
 		var word string
 		for i := 0; i < len(num); i++ {
@@ -35,7 +35,7 @@ func main() {
 						word += "and " + specialDigit[nextNum]
 						break
 					} else {
-						word += specialDigit[nextNum] + otherDigit[position-1]
+						word += specialDigit[nextNum] + " " + otherDigit[position-1] + " "
 						i++
 						continue
 					}
@@ -61,14 +61,27 @@ func main() {
 
 			if position == 3 {
 				if numValue < 1 {
+					// word += " "
 					continue
 				}
 			}
 			if position == 6 {
-				word += oneDigit[numValue] + otherDigit[3] + "and "
+				nextNum := convertNumToInt(string(num[i+1]))
+				nextNum2 := convertNumToInt(string(num[i+2]))
+				if nextNum == 0 {
+					if nextNum2 == 0 {
+						word += oneDigit[numValue] + " " + otherDigit[3]
+						i++
+						continue
+					}
+					word += oneDigit[numValue] + " " + otherDigit[3] + " "
+					i++
+					continue
+				}
+				word += oneDigit[numValue] + " " + otherDigit[3] + " "
 				continue
 			}
-			word += oneDigit[numValue] + otherDigit[position]
+			word += oneDigit[numValue] + " " + otherDigit[position] + " "
 
 		}
 		fmt.Println(word)
